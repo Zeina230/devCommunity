@@ -16,7 +16,7 @@ export async function createBlogAction(formData: FormData) {
   const session = await auth();
 
   if (!session?.user) {
-      return "You must be logged in to create a blog";
+      return;
   }
 
   const result = blogSchema.safeParse({

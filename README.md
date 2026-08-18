@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# DevCommunity
 
-First, run the development server:
+## Project Overview
+
+DevCommunity is a web platform designed for developers to discover and interact with technical content and communities. Users can authenticate, create and read blogs, join communities, and manage their personal profiles.
+
+The project was developed as a Next.js capstone project using MongoDB for data storage and NextAuth for authentication.
+
+## Tech Stack
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* MongoDB Atlas
+* Mongoose
+* NextAuth
+* Zod
+
+## Features Implemented
+
+### Authentication
+
+* Sign in with Google
+* Sign in with GitHub
+* Protected profile page
+* Automatic user authentication
+
+### Blogs
+
+* View available blogs
+* Create new blogs
+* Display recent blogs
+* Store blog data in MongoDB
+
+### Communities
+
+* View communities
+* View community details
+* Join communities
+* Leave communities
+* Store community data in MongoDB
+
+### Profile
+
+* Display authenticated user's name, email, image, bio, and joined date
+* Display blogs created by the user
+* Display communities joined by the user
+* Update profile information
+* Validate profile updates using Zod
+
+## Database
+
+The project uses MongoDB Atlas with Mongoose to store and manage:
+
+* Users
+* Blogs
+* Communities
+
+## Environment Variables
+
+Create a `.env.local` file in the root of the project and add the required environment variables.
+
+```env
+MONGODB_URI=
+AUTH_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+```
+
+**Do not commit ****`.env.local`**** or any secret values to GitHub.**
+
+## How to Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Navigate to the project
+
+```bash
+cd devCommunity
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Create the environment file
+
+Create a file named `.env.local` in the project root and add the required environment variables.
+
+### 5. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 6. Open the application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+http://localhost:3000
+```
 
-## Learn More
+##
 
-To learn more about Next.js, take a look at the following resources:
+## Known Limitations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* The application requires valid Google and GitHub authentication credentials.
+* The application requires a working MongoDB Atlas connection.
+* Some features may depend on the availability of the external authentication providers and database connection.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+DevCommunity Capstone Project
