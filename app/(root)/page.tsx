@@ -3,16 +3,19 @@ import Link from 'next/link'
 import React, { Suspense } from 'react'
 
 const page = async () => {
-    const blogsResponse= await fetch("http://localhost:3000/api/blogs", {
-      cache: "no-store",
-    })
-    const communitiesResponse = await fetch("http://localhost:3000/api/communities", {
-      cache: "no-store",
-    })
-  
+    const blogsResponse = await fetch(
+  `${process.env.AUTH_URL}/api/blogs`,
+  {
+    cache: "no-store",
+  }
+);
 
-  const blogs = await blogsResponse.json();
-  const communities = await communitiesResponse.json();
+const communitiesResponse = await fetch(
+  `${process.env.AUTH_URL}/api/communities`,
+  {
+    cache: "no-store",
+  }
+);
   return (
     <section className="space-y-6">
         <div className="space-y-4">
