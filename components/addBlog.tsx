@@ -28,6 +28,7 @@ export async function createBlogAction(formData: FormData) {
   if (!result.success) {
     throw new Error(result.error.issues[0].message);
   }
+  await connectDB();
 const user = await User.findOne({
   email: session.user.email,
 });
@@ -35,7 +36,7 @@ const user = await User.findOne({
 if (!user) {
   return;
 }
-  await connectDB();
+  
   const baseSlug = result.data.title
   .toLowerCase()
   .trim()

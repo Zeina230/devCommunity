@@ -3,7 +3,7 @@ import React from 'react'
     params: Promise<{slug:string}>
  }
 const page = async ({params}: comProps) => {
-  const communitiesResponse= await fetch("http://localhost:3000/api/communities", {
+  const communitiesResponse= await fetch(`${process.env.AUTH_URL}/api/communities`, {
       cache: "no-store",
     })
     

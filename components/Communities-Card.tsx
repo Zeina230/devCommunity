@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { joinCommunityAction, leaveCommunityAction } from "@/components/communityActions"; 
-import community from '@/models/community';
+
 type c = {
     slug: string,
     name: string,

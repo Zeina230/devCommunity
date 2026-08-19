@@ -1,10 +1,9 @@
-import Blog from '@/models/blog';
 
 const Post =async() => {
-    const blogsResponse= await fetch("http://localhost:3000/api/blogs", {
+    const blogsResponse= await fetch(`${process.env.AUTH_URL}/api/blogs`, {
       cache: "no-store",
     })
-    const communitiesResponse = await fetch("http://localhost:3000/api/communities", {
+    const communitiesResponse = await fetch(`${process.env.AUTH_URL}/api/communities`, {
       cache: "no-store",
     })
   

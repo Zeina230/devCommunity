@@ -29,18 +29,15 @@ export async function joinCommunityAction(slug: string) {
     throw new Error("Community not found");
   }
 
- 
-  if (!Array.isArray(community.members)) {
-    community.members = [];
-  }
-
-  const alreadyMember = community.members.some(
-    (member: any) =>
-      member.toString() === user._id.toString()
+  const alreadyJoined = user.communities.some(
+    (communityId: any) => communityId.toString() === community._id.toString()
   );
 
-  if (!alreadyMember) {
-    community.members.push(user._id);
+  if (!alreadyJoined) {
+    user.communities.push(community._id);
+    community.members += 1;
+
+    await user.save();
     await community.save();
   }
 
@@ -71,16 +68,21 @@ export async function leaveCommunityAction(slug: string) {
     throw new Error("Community not found");
   }
 
-  if (!Array.isArray(community.members)) {
-    community.members = [];
-  }
-
-  community.members = community.members.filter(
-    (member: any) =>
-      member.toString() !== user._id.toString()
+  const joinedIndex = user.communities.findIndex(
+    (communityId: any) =>
+      communityId.toString() === community._id.toString()
   );
 
-  await community.save();
+  if (joinedIndex !== -1) {
+    user.communities.splice(joinedIndex, 1);
+
+    if (community.members > 0) {
+      community.members -= 1;
+    }
+
+    await user.save();
+    await community.save();
+  }
 
   revalidatePath("/communities");
   revalidatePath("/profile");

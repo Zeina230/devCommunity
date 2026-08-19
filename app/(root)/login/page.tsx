@@ -1,5 +1,3 @@
-
-
 import { auth, signIn } from "@/auth"
 import { redirect } from "next/navigation"
 import React from "react"

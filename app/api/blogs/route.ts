@@ -1,7 +1,6 @@
 import connectDB from "@/lib/db";
 import Blog from "@/models/blog";
 import { NextResponse } from "next/server";
-import { string } from "zod";
 export async function GET(){
     try{
         await connectDB();

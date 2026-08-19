@@ -4,7 +4,7 @@ export const revalidate = 60
     params: Promise<{slug:string}>
  }
 const page = async ({params}: comProps) => {
-  const blogsResponse= await fetch("http://localhost:3000/api/blogs")
+  const blogsResponse= await fetch(`${process.env.AUTH_URL}/api/blogs`)
     
   const blogs = await blogsResponse.json();
   const { slug } = await params;

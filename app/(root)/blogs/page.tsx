@@ -3,7 +3,7 @@ import BlogsCard from '@/components/Blogs-Card'
 import { createBlogAction } from '@/components/addBlog'
 export const revalidate = 60
 const page = async () => {
-  const blogsResponse= await fetch("http://localhost:3000/api/blogs" )
+  const blogsResponse= await fetch(`${process.env.AUTH_URL}/api/blogs`)
     
   const blogs = await blogsResponse.json();
   if(blogs.length==0){

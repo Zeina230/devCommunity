@@ -5,11 +5,10 @@ const CommunitySchema = new Schema(
     slug: {type: String,unique:true},
     name: {type: String,required: true},
     description: {type: String,required: true,},
-    members: [{
-    type: Schema.Types.ObjectId,
-    ref: "users",
-    default:[],
-  },],
+    members: {
+    type:Number,
+    default:0,
+  },
     featured: {type: Boolean,default: false,},
   },
   {timestamps: true,}

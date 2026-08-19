@@ -3,6 +3,7 @@ import Blog from "@/models/blog";
 import Community from "@/models/community";
 import User from "@/models/users";
 import { redirect } from "next/navigation";
+import connectDB from "@/lib/db";
 import React from "react";
 import { updateProfileAction } from "@/components/updateProfile";
 
@@ -12,7 +13,7 @@ const page = async () => {
   if (!session) {
     redirect("/login");
   }
-
+await connectDB();
   const user = await User.findOne({
     email: session.user.email,
   }).lean();
@@ -24,9 +25,8 @@ const page = async () => {
   author: user._id,})  .lean();
 
   const communities = await Community.find({
-    members: user._id,
-  })
-
+  _id: { $in: user.communities },
+}).lean();
   return (
     <div className="mx-auto max-w-5xl p-8">
       <div className="mb-10 rounded-xl border p-6">
@@ -98,7 +98,7 @@ const page = async () => {
                 <h3 className="mb-2 text-xl font-bold">
                   {community.name}</h3>
                 <p className="mb-3 text-gray-600">{community.description} </p>
-                <p className="text-sm text-gray-500">Members: {community.members.length}</p>
+                <p className="text-sm text-gray-500">Members: {community.members}</p>
               </div>
             ))}
           </div>

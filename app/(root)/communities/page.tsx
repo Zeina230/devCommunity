@@ -1,16 +1,12 @@
 import React from 'react'
 import CommunitiesCard from '@/components/Communities-Card'
-import { auth } from '@/auth';
-import User from '@/models/users';
-import Community from '@/models/community';
 
 const page = async () => {
-  const communitiesResponse= await fetch("http://localhost:3000/api/communities", {
+  const communitiesResponse= await fetch(`${process.env.AUTH_URL}/api/communities`, {
       cache: "no-store",
     })
     
   const communities = await communitiesResponse.json();
-
 
 return(
     <section className="space-y-6">
